@@ -6,7 +6,7 @@ A tool to inspect VDIF files
 
 TODO: implement libzmq
 
-TODO: parse data if required
+TODO: parse payload if required
 
 TODO: simple GUI
 
