@@ -19,7 +19,7 @@ int main (int argc, char* argv[]){
         exit(1);
     }
     int file_size = vdif_file.tellg();
-    char*buf;
+    char *buf;
     vdif_file.seekg(0, std::ios::beg);
     buf = new char [file_size];
     vdif_file.read(buf, file_size);
