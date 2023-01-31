@@ -1,4 +1,4 @@
-# VDIF_viewer
+# VDIF viewer
 
 A tool to inspect VDIF files with standard 32 bytes headers.
 
