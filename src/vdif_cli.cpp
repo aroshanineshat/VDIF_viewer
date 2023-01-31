@@ -1,5 +1,6 @@
 /*
-    
+    Date: Jan 31, 2023
+    Author: Arash Roshanineshat
 */
 
 #include "vdif_cli.h"

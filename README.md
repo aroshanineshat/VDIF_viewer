@@ -4,9 +4,9 @@ A tool to inspect VDIF files
 
 # Todo list
 
-TODO: implement libzmq
+TODO: implement libzmq and parse streams rather than files
 
-TODO: parse payload if required
+TODO: proess payload
 
 TODO: simple GUI
 
