@@ -31,7 +31,7 @@ struct vdif_frame {
     uint8_t complex_real; // 1bit
     uint8_t bits_per_sample; // 5bits
     uint16_t thread_id; //10 bits
-    char station_id[2]; // 16 bits
+    char station_id[3]; // 16 bits
     uint8_t edv; // 8bits
     uint32_t eud0; //24bits
     uint32_t eud1; //31bits
@@ -108,7 +108,9 @@ static inline uint16_t vdif_get_thread_id(void *buf){
 static inline void vdif_get_station_id(void *buf, char *stationid){ 
     uint32_t bitmask = VDIF_BITMASK(0,16);
     uint16_t r = (((uint32_t*)buf)[0] & bitmask) >> (0);
+    r = (r>>8) | (r<<8);
     memcpy (stationid, &r, 2);
+    stationid[2] = '\0';
 }
 
 static inline uint8_t vdif_get_edv(void *buf){ 

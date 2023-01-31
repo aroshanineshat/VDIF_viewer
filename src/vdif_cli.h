@@ -16,6 +16,8 @@ class vdif_cli{
         int vdif_frame_count(void) const;
         /* get the vdif_frame using its index*/
         int get_vdif_frame(int, vdif_frame&) const;
+        /* print vdif frame using the index*/
+        int print_vdif_frame (int);
         /* initializing the class. it accepts the buffer
         and the buffer size*/
         vdif_cli(void*, int);

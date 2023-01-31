@@ -25,10 +25,15 @@ int main (int argc, char* argv[]){
     vdif_file.read(buf, file_size);
     vdif_file.close();
     // loading the vdif headers
-    vdif_cli vdif_thread((void*)buf, file_size);
+    vdif_cli vdif_thread((void*)buf, file_size); delete[] buf;
+    int vdif_count = vdif_thread.vdif_frame_count();
+    std::cout << "Loaded " << vdif_count << " VDIF frames." << std::endl;
+    for (int i =0 ;i < vdif_count; i++) {
+        vdif_thread.print_vdif_frame(i);
+    }
     std::cout << "done." << std::endl;
     // closing the file.
-    delete[] buf;
+    
     
     return 0;
 }

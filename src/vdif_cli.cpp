@@ -42,6 +42,8 @@ vdif_cli::vdif_cli(void *buf, int buf_size){
         new_vdif.eud1 = vdif_get_eudx((uint32_t*)buf + p + 6);
         // word 7
         new_vdif.eud1 = vdif_get_eudx((uint32_t*)buf + p + 7);
+
+        this->vdif_thread.push_back(new_vdif);
         p = p+ new_vdif.data_frame_length * 2;
         vdif_index ++;
     }
@@ -63,6 +65,24 @@ int vdif_cli::get_vdif_frame(int idx, vdif_frame& frame) const{
     return 0;
 }
 
+int vdif_cli::print_vdif_frame (int idx){
+    vdif_frame c_frame; 
+    if (this->get_vdif_frame(idx, c_frame)<0){
+        return -1;
+    }
+    std::cout << "Frame:" << idx <<"\t===============================" << std::endl;
+    std::cout << "0:\t" <<  +c_frame.invalid << "\t" << +c_frame.legacy << "\t\t" << c_frame.seconds_from_epoch << std::endl;
+    std::cout << "1:\t" <<  "\t" << +c_frame.ref_epoch << "\t\t" << +c_frame.data_frame_within_second << std::endl;
+    std::cout << "2:\t" << +c_frame.vdif_version << "\t" << +c_frame.log2_channels << "\t\t" << c_frame.data_frame_length << std::endl;
+    std::cout << "3:\t" << +c_frame.complex_real << "\t" << +c_frame.bits_per_sample << "\t"  << c_frame.thread_id << "\t" << c_frame.station_id << std::endl;
+    std::cout << "4:\t" << +c_frame.edv << "\t    " << +c_frame.eud0<< std::endl;
+    std::cout << "5:\t" << "\t" << +c_frame.eud1<< std::endl;
+    std::cout << "6:\t" << "\t" << +c_frame.eud2<< std::endl;
+    std::cout << "7:\t" << "\t" << +c_frame.eud3<< std::endl;
+    return 0;
+
+
+}
 
 vdif_cli::~vdif_cli(){
 }
