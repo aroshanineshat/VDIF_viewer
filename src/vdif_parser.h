@@ -3,19 +3,19 @@
     Author: Arash Roshanineshat
 */
 
-/*
-    VDIF_BITMASK takes two inputs and generates the 
-    bitmask for the required field. It assumes a 32-bit
-    word.
-    n: MSB offset (index from 0)
-    c: mask count
-    example:
-    VDIF_BITMASK(2, 3) will generate
-    0b0011_1000_0000_0000_0000_0000_0000_0000 -> 0x3800_0000
-*/
 #include <stdio.h>
 #include <string.h>
 
+/*
+    VDIF_BITMASK takes two arguments and generates the 
+    bitmask for the required field. It's assumed that we
+    use 32-bit words.
+    n: LSB offset (index from 0)
+    c: mask count
+    example:
+    VDIF_BITMASK(2, 3) will generate
+    0b0000_0000_0000_0000_0000_0000_0001_1100 -> 0x0000_001C
+*/
 #define VDIF_BITMASK(n, c) (((1<<c)-1) << n)
 
 struct vdif_frame {
