@@ -24,7 +24,7 @@ and then provide the vdif file through command line:
 
 # Sample output (for now)
 
-The first version draft of the software, loads the whole vdif file into memory 
+The first draft of the software loads the whole vdif file into memory 
 and then explores the vdif frames. 
 
 It prints each frame and the header words individually:
