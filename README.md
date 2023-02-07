@@ -16,7 +16,7 @@ TODO: load large VDIF files
 
 simply run 
 
-`g++ src/vdif_viewer.cpp src/vdif_cli.cpp -o vdif_viewer`
+`cmake . && make` 
 
 and then provide the vdif file through command line:
 
